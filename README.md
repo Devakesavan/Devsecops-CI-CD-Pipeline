@@ -86,7 +86,7 @@ GitHub → Jenkins → SonarQube → OWASP FS Scan → Trivy FS Scan → Docker 
 ## ▶ Run Locally (Optional)
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Devakesavan/Devsecops-CI-CD-Pipeline.git
 cd <project-folder>
 npm install
 npm start

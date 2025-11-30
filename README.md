@@ -1,61 +1,154 @@
-## Hi there! this my new project
-**Welcome to the Hotstart App Deployment project! This project demonstrates how to deploy a Hotstar Next.js application on Kubernetes cluster using modern DevOps tools, practices and following a DevSecOps approach.**
+# 🚀 Full DevSecOps CI/CD Pipeline — Jenkins | SonarQube | OWASP | Trivy | Docker | Kubernetes | AWS EKS | Prometheus | Grafana
 
-## 🛠️ **Tools & Services Used**
-
-| **Category**       | **Tools**                                                                                                                                                                                                 |
-|---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Version Control** | ![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)                                                                                                       |
-| **CI/CD**           | ![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=flat-square&logo=jenkins&logoColor=white)                                                                                                    |
-| **Code Quality**    | ![SonarQube](https://img.shields.io/badge/SonarQube-4E9BCD?style=flat-square&logo=sonarqube&logoColor=white)                                                                                              |
-| **Containerization**| ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)                                                                                                       |
-| **Orchestration**   | ![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=flat-square&logo=kubernetes&logoColor=white)                                                                                          |
-| **Monitoring**      | ![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=flat-square&logo=prometheus&logoColor=white) ![Grafana](https://img.shields.io/badge/Grafana-F46800?style=flat-square&logo=grafana&logoColor=white) |
-| **Security**        | ![OWASP](https://img.shields.io/badge/OWASP-000000?style=flat-square&logo=owasp&logoColor=white) ![Trivy](https://img.shields.io/badge/Trivy-00979D?style=flat-square&logo=trivy&logoColor=white)         |
-| **IAC**             | ![Terraform](https://img.shields.io/badge/Terraform-623CE4?style=flat-square&logo=terraform&logoColor=white)
----
-## 🚦 **Project Stages**
-
-### **Phase 1: Deployment to Docker Container**
-- Containerize the application using Docker.
-- Build and push Docker images to a container registry.
-- Run the application in a Docker container.
-
-### **Phase 2: Deployment to EKS Cluster with Monitoring**
-- Deploy the application to an **Amazon EKS (Elastic Kubernetes Service)** cluster.
-- Set up **Prometheus** and **Grafana** for monitoring and visualization.
-- Implement **Trivy** for vulnerability scanning and **OWASP** for security best practices.
+This project implements a complete automated DevSecOps CI/CD pipeline that takes source code from GitHub, performs quality and security checks, builds a Docker image, deploys it to Amazon EKS, and continuously monitors the running application using Prometheus & Grafana. The application used for deployment is a Hotstar Replica UI.
 
 ---
 
-## 📂 **Code Repository**
-Explore the code and contribute to the project:  
-[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Aseemakram19/hotstar-kubernetes.git)
+## 📌 Architecture Workflow
+
+```
+GitHub → Jenkins → SonarQube → OWASP FS Scan → Trivy FS Scan → Docker Build & Push → Trivy Image Scan → Kubernetes Deployment → AWS EKS → AWS Load Balancer → Prometheus + Grafana → Final Application
+```
 
 ---
-## 📹 **Project Video**
-Watch the step-by-step deployment process:  
-[![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/VPJ4gesLXOc)
+
+## 🧰 Tools & Technologies Used
+
+| Category | Tools |
+|---------|-------|
+| Version Control | Git & GitHub |
+| CI/CD | Jenkins |
+| Code Quality | SonarQube |
+| Security | OWASP Scan, Trivy FS Scan, Trivy Image Scan |
+| Containerization | Docker & Docker Hub |
+| Infrastructure | Kubernetes, Amazon EKS, Terraform |
+| Monitoring | Prometheus, Grafana, Blackbox Exporter |
+| Notifications | Gmail Pipeline Email |
 
 ---
-## 🚀 **Other DevOps Projects**
 
-| **Project**                                | **Video Link**                                                                                   |
-|--------------------------------------------|--------------------------------------------------------------------------------------------------|
-| **JAVA APPLICATION DEPLOYMENT Project**                     | [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=flat-square&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=R98DHKqAEos) |
-| **Deployment of BINGO in Kubernetes Cluster Monitoring**  | [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=flat-square&logo=youtube&logoColor=white)](https://youtu.be/j6YxADVF0W8) |
-| **Real-time CICD pipeline Website Jenkins CI CD**         | [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=flat-square&logo=youtube&logoColor=white)](https://youtu.be/xGWx_cXb9DE) |
-| **DevOps Project , Application deployment on App server via Terraform, Jenkins, SonarQube**                     | [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=flat-square&logo=youtube&logoColor=white)](https://youtu.be/xGWx_cXb9DE) |
-| **Realtime NODE.js App deployment with PM2 , Shell script, Jenkins, SonarQube ,Github ,Domain SSL cert**                     | [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=flat-square&logo=youtube&logoColor=white)](https://youtu.be/MFtUCfQ1RX0) |
+## 🔥 Key Features
 
-## 🤝 **Connect with Me**
+- Fully automated DevSecOps CI/CD pipeline
+- Code quality validation using SonarQube Quality Gate
+- Dual-layer filesystem vulnerability scanning using OWASP + Trivy
+- Container image scanning using Trivy (NVD database)
+- Docker image versioning and storage in Docker Hub
+- Zero-downtime deployment to AWS EKS via rolling updates
+- External endpoint monitoring using Blackbox Exporter
+- Real-time Grafana dashboards with alerting
+- Email notification with scan reports after deployment
 
-Let's connect and discuss DevSecOps  
+---
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mohammed-aseem-akram/)  
+## 🧩 Pipeline Stages
 
+1. Code commit triggers Jenkins pipeline
+2. SonarQube static code analysis and quality gate validation
+3. OWASP and Trivy filesystem scans
+4. Docker image build and push to Docker Hub
+5. Trivy image scan validation
+6. Kubernetes deployment using `kubectl apply`
+7. AWS Load Balancer exposes the application publicly
+8. Continuous monitoring using Prometheus, Grafana & Blackbox Exporter
 
+---
 
+## 📸 Screenshots
 
+- Architecture Workflow Diagram  
+- Jenkins Pipeline Stage View  
+- SonarQube Dashboard  
+- OWASP / Trivy Filesystem Scan  
+- Docker Hub Repository  
+- Trivy Image Scan  
+- CI/CD Email Notification  
+- Kubernetes Deployment  
+- AWS EKS Cluster  
+- AWS Load Balancer  
+- Prometheus Targets / Blackbox Exporter  
+- Grafana Dashboards  
+- Final Application (Hotstar Replica)
 
+Screenshots are available in the `/screenshots` folder.
 
+---
+
+## 🏗 Project Structure
+
+```
+.
+├── k8s-manifests/
+│   ├── deployment.yaml
+│   ├── service.yaml
+│   └── ingress.yaml (optional)
+├── Jenkinsfile
+├── Dockerfile
+├── sonar-project.properties
+└── src/
+```
+
+---
+
+## ▶ Local Development
+
+```bash
+git clone <repository-url>
+cd <project-folder>
+npm install
+npm start
+```
+
+---
+
+## 📦 Build Docker Image Manually (Optional)
+
+```bash
+docker build -t <dockerhub-username>/<image-name>:v1 .
+docker push <dockerhub-username>/<image-name>:v1
+```
+
+---
+
+## ☸ Deploy to Kubernetes Manually (Optional)
+
+```bash
+kubectl apply -f k8s-manifests/
+kubectl get pods
+kubectl get svc
+```
+
+---
+
+## 📡 Monitoring Access
+
+| Component | URL |
+|----------|-----|
+| Prometheus | http://<monitoring-ip>:9090 |
+| Grafana | http://<monitoring-ip>:3000 |
+| Blackbox Exporter | http://<monitoring-ip>:9115 |
+
+---
+
+## 🌟 Final Output
+
+A production-ready Hotstar-style web application running on AWS EKS and updated automatically through CI/CD and DevSecOps automation.
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss the proposal.
+
+---
+
+## 📬 Contact
+
+- LinkedIn: <your link>
+- Email: <your email>
+
+---
+
+## ⭐ Support
+
+If you found this project useful, please consider starring the repository. It encourages more DevOps open-source projects.

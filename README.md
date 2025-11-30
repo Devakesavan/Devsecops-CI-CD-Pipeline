@@ -137,8 +137,8 @@ Contributions are welcome. Please open an issue to propose improvements.
 
 ## 📬 Contact
 
-- LinkedIn: <your link>
-- Email: <your email>
+- LinkedIn: https://www.linkedin.com/in/devanadhan-c-k/
+- Email: devanadhan.16102005@gmail.com
 
 ---
 
